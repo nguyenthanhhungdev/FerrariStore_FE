@@ -1,22 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import ProductList from './ProductList';
-import CartIcon from './CartIcon';
 
-function App() {
-  const [cartCount, setCartCount] = useState(0);
+const App = () => {
+  const [products, setProducts] = useState([]);
 
-  const handleAddToCart = () => {
-    setCartCount(cartCount + 1);
-  };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('http://localhost:5024/api/Book');
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
-    <div className="App">
-      <CartIcon cartCount={cartCount} />
-      <h1>Danh sách sản phẩm</h1>
-      <ProductList onAddToCart={handleAddToCart} />
+    <div id="root" className="max-w-7xl mx-auto p-8 text-center">
+      <ProductList products={products} />
     </div>
   );
-}
+};
 
 export default App;
