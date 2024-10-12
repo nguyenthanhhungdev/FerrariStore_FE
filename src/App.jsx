@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './App.css';
+// import './App.css';
 import ProductList from './ProductList';
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
   }, []);
 
   return (
-    <div id="root" className="max-w-7xl mx-auto p-8 text-center">
+    <div id="root" className="m-0 flex place-items-center min-w-[320px] min-h-screen font-pop">
       <ProductList products={products} />
     </div>
   );

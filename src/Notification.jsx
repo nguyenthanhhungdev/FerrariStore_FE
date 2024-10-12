@@ -1,33 +1,16 @@
 // src/Notification.jsx
-import { useEffect, useState } from 'react';
-import './Notification.css';
+// import './Notification.css';
 
-// eslint-disable-next-line react/prop-types
-function Notification({ message, onClose, duration = 3000 }) {
-  const [progress, setProgress] = useState(100);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => prev - 100 / (duration / 100));
-    }, 100);
-
-    const timeout = setTimeout(() => {
-      onClose();
-    }, duration);
-
-    return () => {
-      clearInterval(interval);
-      clearTimeout(timeout);
-    };
-  }, [duration, onClose]);
-
+const Notification = ({ message, onClose }) => {
   return (
-    <div className="notification">
-      <p>{message}</p>
-      <div className="progress-bar" style={{ width: `${progress}%` }}></div>
-      <button onClick={onClose}>Close</button>
+    <div className="fixed top-5 right-5 bg-darkBackground text-white p-4 rounded-lg shadow-custom z-50">
+      {message}
+      <button onClick={onClose} className="ml-4 bg-none border-none text-white text-lg cursor-pointer">
+        &times;
+      </button>
+      <div className="h-1 bg-green-500 mt-2 transition-width duration-100"></div>
     </div>
   );
-}
+};
 
 export default Notification;
