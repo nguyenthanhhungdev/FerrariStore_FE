@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
+import App from './Book/App.jsx'
 // Xóa dòng dưới đây
 import './index.css'
 

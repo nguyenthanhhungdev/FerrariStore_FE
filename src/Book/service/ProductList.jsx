@@ -1,7 +1,8 @@
-// src/ProductList.jsx
-import ProductCard from './ProductCard.jsx';
+// src/Book/service/ProductList.jsx
+import PropTypes from 'prop-types';
+import ProductCard from '../component/ProductCard.jsx';
+import { productPropType } from '../utils/propTypes.js';
 
-// eslint-disable-next-line react/prop-types
 const ProductList = ({ products }) => {
   return (
     <div className="product-list">
@@ -12,4 +13,9 @@ const ProductList = ({ products }) => {
   );
 };
 
+ProductList.propTypes = {
+  products: PropTypes.arrayOf(productPropType).isRequired,
+};
+
 export default ProductList;
+

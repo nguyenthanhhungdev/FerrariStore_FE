@@ -1,23 +1,16 @@
-import { useEffect, useState } from 'react';
-// import './App.css';
-import ProductList from './ProductList.jsx';
+import useFetchProducts from './hooks/useFetchBook.js';
+import ProductList from './service/ProductList.jsx';
 
 const App = () => {
-  const [products, setProducts] = useState([]);
+  const { products, loading, error } = useFetchProducts();
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('http://localhost:5024/api/Book');
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-    fetchProducts();
-  }, []);
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <div id="root" className="m-0 flex place-items-center min-w-[320px] min-h-screen font-pop">
