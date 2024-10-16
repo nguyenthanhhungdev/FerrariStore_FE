@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 // import './App.css';
-import ProductList from './ProductList';
+import ProductList from './ProductList.jsx';
 
 const App = () => {
   const [products, setProducts] = useState([]);

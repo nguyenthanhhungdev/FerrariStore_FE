@@ -1,5 +1,4 @@
 // src/CartIcon.jsx
-// import './CartIcon.css';
 
 const CartIcon = ({ cartCount }) => {
   return (
