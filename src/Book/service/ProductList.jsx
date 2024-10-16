@@ -1,5 +1,5 @@
 // src/ProductList.jsx
-import ProductCard from './ProductCard';
+import ProductCard from './ProductCard.jsx';
 
 // eslint-disable-next-line react/prop-types
 const ProductList = ({ products }) => {
